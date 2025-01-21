@@ -17,15 +17,15 @@
       left: 50%;
       transform: translate(-50%, 0);
       width: 60%; /* Breite des Textblocks */
-      font-size: 1rem; /* Schriftgröße */
+      font-size: 1rem; /* Standard-Schriftgröße */
       line-height: 1.6; /* Zeilenhöhe */
       text-align: left; /* Linksbündig */
-      opacity: 0; /* Unsichtbar beim Start */
+      opacity: 0; /* Unsichtbar beim Laden */
       transition: opacity 2s ease-in-out; /* Sanftes Ein- und Ausblenden */
     }
 
     .text-container.visible {
-      opacity: 1; /* Voll sichtbar */
+      opacity: 1; /* Sichtbar */
     }
   </style>
 </head>
@@ -55,15 +55,19 @@
 
       // Bedingung für Sichtbarkeit
       if (scrollPosition > windowHeight * 0.1 && scrollPosition < windowHeight * 1.5) {
-        textContainer.classList.add("visible");
+        textContainer.classList.add("visible"); // Text einblenden
       } else {
-        textContainer.classList.remove("visible");
+        textContainer.classList.remove("visible"); // Text ausblenden
       }
     });
 
-    // Fallback: Sichtbarkeit nach Laden der Seite erzwingen
+    // Fallback: Initialen Transition-Effekt sicherstellen
     document.addEventListener("DOMContentLoaded", () => {
-      textContainer.style.opacity = 1; // Zeigt Text, falls Scroll-Event nicht greift
+      setTimeout(() => {
+        if (window.scrollY > window.innerHeight * 0.1) {
+          textContainer.classList.add("visible");
+        }
+      }, 100); // Kurze Verzögerung, um Transition zu ermöglichen
     });
   </script>
 </body>
