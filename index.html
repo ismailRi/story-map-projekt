@@ -8,16 +8,19 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+      background: linear-gradient(to bottom, #1e3c72, #2a5298); /* Blaues Hintergrund-Design */
+      color: white; /* Weißer Text */
       height: 200vh; /* Ermöglicht Scrollen */
-      color: white;
+      overflow-x: hidden; /* Kein horizontaler Scrollen */
+    }
+
+    /* Begrüßungstext */
+    h1, p {
+      margin: 20px auto;
       text-align: center;
     }
 
-    h1 {
-      margin-top: 20px;
-    }
-
+    /* iframe-Container */
     .iframe-container {
       position: fixed;
       top: 50%;
@@ -29,6 +32,7 @@
       border: 2px solid #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       display: none; /* Unsichtbar beim Laden */
+      z-index: 10; /* Bringt den iframe über alle anderen Elemente */
     }
 
     iframe {
