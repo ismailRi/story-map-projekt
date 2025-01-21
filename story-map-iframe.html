@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Map mit iframe</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      height: 300vh; /* Längere Seite für Scrollen */
+      position: relative;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+    }
+
+    .iframe-container {
+      position: absolute;
+      top: 150%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 80%;
+      height: 50vh;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.5s, opacity 0.5s;
+      opacity: 0;
+    }
+
+    .iframe-container.visible {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="iframe-container" id="iframeContainer">
+      <iframe src="https://www.example.com" title="Externer Inhalt"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // Hole die iframe-Container
+    const iframeContainer = document.getElementById("iframeContainer");
+
+    // Funktion, um Scroll-Position zu überprüfen
+    window.addEventListener("scroll", () => {
+      const iframePosition = iframeContainer.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      // Sichtbarkeitslogik
+      if (iframePosition < windowHeight * 0.8) {
+        iframeContainer.classList.add("visible");
+      } else {
+        iframeContainer.classList.remove("visible");
+      }
+    });
+  </script>
+</body>
+</html>
