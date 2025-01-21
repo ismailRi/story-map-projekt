@@ -5,32 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Story Map Text-Effekt</title>
   <style>
-    /* Der Text-Container */
+    /* Stil für den Text-Container */
     .text-container {
       position: fixed;
-      top: 50%;
+      top: 20%; /* Positioniert den Text höher */
       left: 50%;
-      transform: translate(-50%, -30%);
-      width: 80%;
-      background: white;
-      color: black;
-      padding: 20px;
-      border: 2px solid black;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      transform: translate(-50%, 0);
+      width: 60%; /* Angepasste Breite für einen lesbaren Block */
+      font-family: 'Noto Serif', serif; /* Schriftart wie im Beispiel */
+      font-size: 1rem; /* Standardgröße */
+      line-height: 1.6; /* Lesbarer Zeilenabstand */
+      color: #333; /* Dunkelgraue Schriftfarbe */
+      text-align: left; /* Text linksbündig */
       opacity: 0; /* Unsichtbar beim Laden */
-      z-index: 10; /* Immer im Vordergrund */
-      font-size: 1rem;
-      line-height: 1.5;
-      border-radius: 8px;
-
-      /* Übergangsanimation */
-      transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+      transition: opacity 1.5s ease-in-out; /* Sanfter Einblendeffekt */
     }
 
     /* Sichtbarer Zustand des Containers */
     .text-container.visible {
       opacity: 1; /* Voll sichtbar */
-      transform: translate(-50%, 0%); /* Sanft in die Mitte gleiten */
     }
   </style>
 </head>
@@ -50,7 +43,7 @@
   </div>
 
   <script>
-    // Warte 500ms und zeige dann den Text an
+    // Warte, bis die Seite geladen ist, und zeige dann den Text an
     window.addEventListener("DOMContentLoaded", () => {
       const textContainer = document.getElementById("textContainer");
       setTimeout(() => {
