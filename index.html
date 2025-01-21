@@ -29,27 +29,27 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -20%);
+      transform: translate(-50%, -30%);
       width: 80%;
       background: white;
       color: black;
       padding: 20px;
       border: 2px solid black;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      display: none; /* Unsichtbar beim Laden */
+      opacity: 0; /* Unsichtbar beim Laden */
       z-index: 10; /* Immer im Vordergrund */
       font-size: 1rem;
       line-height: 1.5;
       border-radius: 8px;
-      opacity: 0; /* Vollkommen unsichtbar */
-      transition: transform 1s ease-out, opacity 1s ease-out; /* Smooth Animation */
+
+      /* Übergangsanimation */
+      transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
     }
 
     /* Sichtbarer Zustand des Containers */
     .text-container.visible {
-      display: block;
-      opacity: 1; /* Sichtbar */
-      transform: translate(-50%, 0%); /* In Position gleiten */
+      opacity: 1; /* Voll sichtbar */
+      transform: translate(-50%, 0%); /* Sanft in die Mitte gleiten */
     }
   </style>
 </head>
