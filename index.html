@@ -6,27 +6,27 @@
   <style>
     /* Stil für den Text-Container */
     .text-container {
-      position: fixed;
-      top: 20%; /* Positioniert den Text höher */
+      position: absolute;
+      top: 20%; /* Positioniert den Text sichtbar höher */
       left: 50%;
       transform: translate(-50%, 0);
-      width: 60%; /* Angepasste Breite für einen lesbaren Block */
-      font-family: 'Noto Serif', serif; /* Schriftart wie im Beispiel */
-      font-size: 1rem; /* Standardgröße */
-      line-height: 1.6; /* Lesbarer Zeilenabstand */
-      color: #333; /* Dunkelgraue Schriftfarbe */
+      width: 60%; /* Breite anpassen */
+      font-family: 'Noto Serif', serif; /* Schriftart */
+      font-size: 1rem; /* Standard-Schriftgröße */
+      line-height: 1.6; /* Zeilenabstand für bessere Lesbarkeit */
+      color: #000; /* Schwarz für maximale Lesbarkeit */
       text-align: left; /* Text linksbündig */
       opacity: 0; /* Unsichtbar beim Laden */
-      transition: opacity 2s ease-in-out; /* Sanfter Ein- und Ausblendeffekt */
+      transition: opacity 2s ease-in-out; /* Sanfter Übergang */
     }
 
     /* Sichtbarer Zustand des Containers */
     .text-container.visible {
-      opacity: 1;
+      opacity: 1; /* Sichtbar */
     }
   </style>
 </head>
-<body>
+<body style="background-color: white;"> <!-- Weißer Hintergrund -->
   <!-- Der Text-Container -->
   <div class="text-container" id="textContainer">
     <p>
@@ -45,16 +45,16 @@
     // Hole den Text-Container
     const textContainer = document.getElementById("textContainer");
 
-    // Funktion, um das Scroll-Verhalten zu überwachen
+    // Überwache das Scroll-Verhalten
     window.addEventListener("scroll", () => {
-      const scrollPosition = window.scrollY; // Scrollposition holen
+      const scrollPosition = window.scrollY; // Scrollposition
       const windowHeight = window.innerHeight; // Fensterhöhe
 
-      // Logik: Text ein- oder ausblenden, je nach Scrollposition
+      // Logik: Text ein- oder ausblenden
       if (scrollPosition > windowHeight * 0.2 && scrollPosition < windowHeight * 1.2) {
-        textContainer.classList.add("visible"); // Zeige den Text
+        textContainer.classList.add("visible");
       } else {
-        textContainer.classList.remove("visible"); // Verstecke den Text
+        textContainer.classList.remove("visible");
       }
     });
   </script>
