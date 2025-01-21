@@ -50,19 +50,12 @@
   </div>
 
   <script>
-    // Hole den Text-Container
-    const textContainer = document.getElementById("textContainer");
-
-    // Überwache das Scrollen
-    window.addEventListener("scroll", () => {
-      const scrollPosition = window.scrollY;
-
-      // Text sichtbar machen, wenn mehr als 300px gescrollt wurde
-      if (scrollPosition > 300) {
+    // Warte 500ms und zeige dann den Text an
+    window.addEventListener("DOMContentLoaded", () => {
+      const textContainer = document.getElementById("textContainer");
+      setTimeout(() => {
         textContainer.classList.add("visible");
-      } else {
-        textContainer.classList.remove("visible");
-      }
+      }, 500); // Wartezeit in Millisekunden
     });
   </script>
 </body>
