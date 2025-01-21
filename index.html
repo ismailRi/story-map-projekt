@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #1e3c72, #2a5298);
       color: white;
-      height: 200vh; /* Erlaubt Scrollen */
+      height: 200vh; /* Ermöglicht Scrollen */
       overflow-x: hidden;
     }
 
@@ -24,50 +24,57 @@
       margin-top: 10px;
     }
 
-    /* Der iframe-Container */
-    .iframe-container {
+    /* Der Text-Container */
+    .text-container {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 80%;
-      height: 50vh;
       background: white;
+      color: black;
+      padding: 20px;
       border: 2px solid black;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       display: none; /* Unsichtbar beim Laden */
       z-index: 10; /* Immer im Vordergrund */
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
   <h1>Willkommen zu meiner Story Map</h1>
-  <p>Scrollen Sie nach unten, um den eingebetteten Inhalt zu sehen.</p>
+  <p>Scrollen Sie nach unten, um weitere Informationen zu sehen.</p>
 
-  <!-- Der iframe-Container -->
-  <div class="iframe-container" id="iframeContainer">
-    <iframe src="https://www.wikipedia.org" title="Externer Inhalt"></iframe>
+  <!-- Der Text-Container -->
+  <div class="text-container" id="textContainer">
+    <p>
+      Ein grosser Anteil der Bevölkerung in Davos ist erwerbstätig. Dies zeigt das grosse Angebot an Arbeitsplätzen, insbesondere im Bereich Tourismus. 
+      Es lohnt sich nur, dort zu arbeiten, wo andere Urlaub machen, wenn man von den Touristen profitiert. Davos verspricht zudem eine sehr hohe Lebensqualität, 
+      ein aussergewöhnliches Freizeit- und Kulturangebot, medizinische Versorgung vor Ort sowie international ausgerichtete Bildungsinstitutionen.
+    </p>
+    <p>
+      Dennoch erfährt Davos in den letzten Jahrzehnten keine grosse Zuwanderung. Dies liegt unter anderem daran, dass Platz und Infrastruktur begrenzt ist. 
+      Seit Ende des 19. Jahrhunderts wurde Davos stark für den Tourismus ausgebaut – mit Hotels, Kongresszentren, Kliniken und Skipisten. 
+      Alles geschah, um den Tourismus und die Wirtschaft zu fördern.
+    </p>
   </div>
 
   <script>
-    // Hole den iframe-Container
-    const iframeContainer = document.getElementById("iframeContainer");
+    // Hole den Text-Container
+    const textContainer = document.getElementById("textContainer");
 
     // Überwache das Scrollen
     window.addEventListener("scroll", () => {
       const scrollPosition = window.scrollY;
 
-      // iframe sichtbar machen, wenn mehr als 300px gescrollt wurde
+      // Text sichtbar machen, wenn mehr als 300px gescrollt wurde
       if (scrollPosition > 300) {
-        iframeContainer.style.display = "block";
+        textContainer.style.display = "block";
       } else {
-        iframeContainer.style.display = "none";
+        textContainer.style.display = "none";
       }
     });
   </script>
