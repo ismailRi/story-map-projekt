@@ -4,33 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      background-color: white; /* Weißer Hintergrund */
-      font-family: 'Noto Serif', serif; /* Schriftart */
-      color: #000; /* Schwarz für Textfarbe */
-    }
-
+    /* Stil für den Text-Container */
     .text-container {
-      position: absolute;
-      top: 20%; /* Positioniert den Text sichtbar */
+      position: fixed;
+      top: 20%; /* Positioniert den Text höher */
       left: 50%;
       transform: translate(-50%, 0);
-      width: 60%; /* Breite des Textblocks */
-      font-size: 1rem; /* Standard-Schriftgröße */
-      line-height: 1.6; /* Zeilenhöhe */
-      text-align: left; /* Linksbündig */
+      width: 60%; /* Angepasste Breite für einen lesbaren Block */
+      font-family: 'Noto Serif', serif; /* Schriftart wie im Beispiel */
+      font-size: 1rem; /* Standardgröße */
+      line-height: 1.6; /* Lesbarer Zeilenabstand */
+      color: #333; /* Dunkelgraue Schriftfarbe */
+      text-align: left; /* Text linksbündig */
       opacity: 0; /* Unsichtbar beim Laden */
-      transition: opacity 2s ease-in-out; /* Sanftes Ein- und Ausblenden */
+      transition: opacity 3s ease-in-out; /* Längere Transition von 3 Sekunden */
     }
 
+    /* Sichtbarer Zustand des Containers */
     .text-container.visible {
-      opacity: 1; /* Sichtbar */
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <!-- Der Textblock -->
+  <!-- Der Text-Container -->
   <div class="text-container" id="textContainer">
     <p>
       Ein grosser Anteil der Bevölkerung in Davos ist erwerbstätig. Dies zeigt das grosse Angebot an Arbeitsplätzen, insbesondere im Bereich Tourismus. 
@@ -45,29 +42,12 @@
   </div>
 
   <script>
-    // Text-Container holen
-    const textContainer = document.getElementById("textContainer");
-
-    // Funktion zum Ein- und Ausblenden
-    window.addEventListener("scroll", () => {
-      const scrollPosition = window.scrollY; // Aktuelle Scrollposition
-      const windowHeight = window.innerHeight; // Fensterhöhe
-
-      // Bedingung für Sichtbarkeit
-      if (scrollPosition > windowHeight * 0.1 && scrollPosition < windowHeight * 1.5) {
-        textContainer.classList.add("visible"); // Text einblenden
-      } else {
-        textContainer.classList.remove("visible"); // Text ausblenden
-      }
-    });
-
-    // Fallback: Initialen Transition-Effekt sicherstellen
-    document.addEventListener("DOMContentLoaded", () => {
+    // Warte, bis die Seite geladen ist, und zeige dann den Text an
+    window.addEventListener("DOMContentLoaded", () => {
+      const textContainer = document.getElementById("textContainer");
       setTimeout(() => {
-        if (window.scrollY > window.innerHeight * 0.1) {
-          textContainer.classList.add("visible");
-        }
-      }, 100); // Kurze Verzögerung, um Transition zu ermöglichen
+        textContainer.classList.add("visible");
+      }, 500); // Wartezeit in Millisekunden
     });
   </script>
 </body>
