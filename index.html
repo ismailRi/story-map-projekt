@@ -4,30 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Stil für den Text-Container */
-    .text-container {
-      position: absolute;
-      top: 20%; /* Positioniert den Text sichtbar höher */
-      left: 50%;
-      transform: translate(-50%, 0);
-      width: 60%; /* Breite anpassen */
+    body {
+      margin: 0;
+      background-color: white; /* Weißer Hintergrund */
       font-family: 'Noto Serif', serif; /* Schriftart */
-      font-size: 1rem; /* Standard-Schriftgröße */
-      line-height: 1.6; /* Zeilenabstand für bessere Lesbarkeit */
-      color: #000; /* Schwarz für maximale Lesbarkeit */
-      text-align: left; /* Text linksbündig */
-      opacity: 0; /* Unsichtbar beim Laden */
-      transition: opacity 2s ease-in-out; /* Sanfter Übergang */
+      color: #000; /* Schwarz für Textfarbe */
     }
 
-    /* Sichtbarer Zustand des Containers */
+    .text-container {
+      position: absolute;
+      top: 20%; /* Positioniert den Text sichtbar */
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 60%; /* Breite des Textblocks */
+      font-size: 1rem; /* Schriftgröße */
+      line-height: 1.6; /* Zeilenhöhe */
+      text-align: left; /* Linksbündig */
+      opacity: 0; /* Unsichtbar beim Start */
+      transition: opacity 2s ease-in-out; /* Sanftes Ein- und Ausblenden */
+    }
+
     .text-container.visible {
-      opacity: 1; /* Sichtbar */
+      opacity: 1; /* Voll sichtbar */
     }
   </style>
 </head>
-<body style="background-color: white;"> <!-- Weißer Hintergrund -->
-  <!-- Der Text-Container -->
+<body>
+  <!-- Der Textblock -->
   <div class="text-container" id="textContainer">
     <p>
       Ein grosser Anteil der Bevölkerung in Davos ist erwerbstätig. Dies zeigt das grosse Angebot an Arbeitsplätzen, insbesondere im Bereich Tourismus. 
@@ -42,20 +45,25 @@
   </div>
 
   <script>
-    // Hole den Text-Container
+    // Text-Container holen
     const textContainer = document.getElementById("textContainer");
 
-    // Überwache das Scroll-Verhalten
+    // Funktion zum Ein- und Ausblenden
     window.addEventListener("scroll", () => {
-      const scrollPosition = window.scrollY; // Scrollposition
+      const scrollPosition = window.scrollY; // Aktuelle Scrollposition
       const windowHeight = window.innerHeight; // Fensterhöhe
 
-      // Logik: Text ein- oder ausblenden
-      if (scrollPosition > windowHeight * 0.2 && scrollPosition < windowHeight * 1.2) {
+      // Bedingung für Sichtbarkeit
+      if (scrollPosition > windowHeight * 0.1 && scrollPosition < windowHeight * 1.5) {
         textContainer.classList.add("visible");
       } else {
         textContainer.classList.remove("visible");
       }
+    });
+
+    // Fallback: Sichtbarkeit nach Laden der Seite erzwingen
+    document.addEventListener("DOMContentLoaded", () => {
+      textContainer.style.opacity = 1; // Zeigt Text, falls Scroll-Event nicht greift
     });
   </script>
 </body>
