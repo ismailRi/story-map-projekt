@@ -3,26 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Debugging Test</title>
+  <title>Story Map mit Scroll-Effekt</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: blue; /* Einfacher blauer Hintergrund */
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
       color: white;
-      text-align: center;
+      height: 200vh; /* Erlaubt Scrollen */
+      overflow-x: hidden;
     }
 
     h1 {
-      margin-top: 50px;
+      text-align: center;
+      margin-top: 20px;
     }
 
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Der iframe-Container */
     .iframe-container {
-      margin: 20px auto;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 80%;
       height: 50vh;
       background: white;
       border: 2px solid black;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      display: none; /* Unsichtbar beim Laden */
+      z-index: 10; /* Immer im Vordergrund */
     }
 
     iframe {
@@ -33,9 +47,29 @@
   </style>
 </head>
 <body>
-  <h1>Willkommen! Dies ist ein Test</h1>
-  <div class="iframe-container">
-    <iframe src="https://www.wikipedia.org" title="Test-iframe"></iframe>
+  <h1>Willkommen zu meiner Story Map</h1>
+  <p>Scrollen Sie nach unten, um den eingebetteten Inhalt zu sehen.</p>
+
+  <!-- Der iframe-Container -->
+  <div class="iframe-container" id="iframeContainer">
+    <iframe src="https://www.wikipedia.org" title="Externer Inhalt"></iframe>
   </div>
+
+  <script>
+    // Hole den iframe-Container
+    const iframeContainer = document.getElementById("iframeContainer");
+
+    // Überwache das Scrollen
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.scrollY;
+
+      // iframe sichtbar machen, wenn mehr als 300px gescrollt wurde
+      if (scrollPosition > 300) {
+        iframeContainer.style.display = "block";
+      } else {
+        iframeContainer.style.display = "none";
+      }
+    });
+  </script>
 </body>
 </html>
